@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ФизЛабо — учебное оборудование для школ</title>
 <style>
-   /* ОБЩИЕ КЛАССЫ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background: #ffffff;
+    color: #0F0F10;
+    line-height: 1.5;
+  }
+
+  /* ОБЩИЕ КЛАССЫ */
   .container {
     max-width: 1440px;
     margin: 0 auto;
@@ -25,9 +33,73 @@
     border: none;
     cursor: pointer;
   }
-  .btn:hover {
-    background: #154a8e;
+  .btn:hover { background: #154a8e; }
+
+  /* ШАПКА */
+  .header {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #E0E0E0;
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 40px;
   }
+  
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    justify-self: start;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: #1A5FB4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .logo-text { font-size: 22px; font-weight: 700; color: #0F0F10; }
+
+  .nav {
+    display: flex;
+    gap: 32px;
+    justify-self: center;
+  }
+  .nav a {
+    font-size: 15px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav a:hover { color: #1A5FB4; }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-self: end;
+  }
+  .phone { font-size: 15px; font-weight: 600; color: #0F0F10; }
+  .header-icon {
+    font-size: 20px;
+    color: #0F0F10;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  .header-icon:hover { color: #1A5FB4; }
+  .cart-count { font-size: 14px; margin-left: 4px; }
 
   /* HERO БЛОК */
   .hero {
@@ -45,35 +117,31 @@
     max-width: 600px;
   }
   .hero-text h1 {
-    font-size: 56px;
-    line-height: 1.1;
+    font-size: 46px; /* Уменьшили, чтобы влезало в 3 строки */
+    line-height: 1.15;
     font-weight: 700;
     color: #0F0F10;
     margin-bottom: 24px;
+    max-width: 560px;
   }
   .hero-text p {
     font-size: 18px;
     line-height: 1.6;
     color: #666666;
     margin-bottom: 40px;
+    max-width: 500px;
   }
   .hero-image {
     flex: 1;
     display: flex;
     justify-content: flex-end;
   }
-  .image-placeholder {
+  .hero-image img {
     width: 100%;
-    max-width: 620px;
-    height: 460px;
-    background: #F5F7FA;
+    max-width: 600px;
+    height: auto;
     border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    font-size: 16px;
-    border: 2px dashed #E0E0E0;
+    object-fit: cover;
   }
 
   /* АДАПТИВ ДЛЯ ТЕЛЕФОНОВ */
@@ -81,112 +149,13 @@
     .hero-container {
       flex-direction: column;
       text-align: center;
+      gap: 40px;
     }
-    .hero-text h1 {
-      font-size: 36px;
-    }
-    .hero-image {
-      justify-content: center;
-      width: 100%;
-    }
-    .image-placeholder {
-      height: 300px;
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-    background: #ffffff;
-    color: #0F0F10;
-  }
-
-  /* ШАПКА НА СЕТКЕ */
-  .header {
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid #E0E0E0;
-    background: #ffffff;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    
-    /* Делаем 3 равные колонки: лево, центр, право */
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    padding: 0 40px;
-  }
-  
-  /* ЛЕВАЯ ЧАСТЬ */
-  .logo-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    justify-self: start; /* Прижимаем влево */
-  }
-  .logo-icon {
-    width: 32px;
-    height: 32px;
-    background: #1A5FB4;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-  }
-  .logo-text {
-    font-size: 22px;
-    font-weight: 700;
-    color: #0F0F10;
-  }
-
-  /* ЦЕНТР (МЕНЮ) */
-  .nav {
-    display: flex;
-    gap: 32px;
-    justify-self: center; /* Ровно по центру */
-  }
-  .nav a {
-    font-size: 15px;
-    color: #666;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav a:hover { color: #1A5FB4; }
-
-  /* ПРАВАЯ ЧАСТЬ */
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    justify-self: end; /* Прижимаем вправо */
-  }
-  .phone {
-    font-size: 15px;
-    font-weight: 600;
-    color: #0F0F10;
-  }
-  .header-icon {
-    font-size: 20px;
-    color: #0F0F10;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-  .header-icon:hover { color: #1A5FB4; }
-  
-  /* Иконка корзины со счетчиком */
-  .cart-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .cart-count {
-    font-size: 14px;
-    margin-left: 4px;
+    .hero-text h1 { font-size: 36px; margin: 0 auto 24px; }
+    .hero-text p { margin: 0 auto 32px; }
+    .hero-image { justify-content: center; }
+    .header { display: flex; flex-wrap: wrap; height: auto; padding: 20px; gap: 20px; }
+    .nav { display: none; } /* На телефоне прячем меню */
   }
 </style>
 </head>
@@ -194,13 +163,11 @@
 
 <!-- ШАПКА -->
 <header class="header">
-  <!-- Левая часть: Логотип -->
   <a href="#" class="logo-group">
     <div class="logo-icon">Ф</div>
     <span class="logo-text">ФизЛабо</span>
   </a>
   
-  <!-- Центр: Меню -->
   <nav class="nav">
     <a href="#">Каталог</a>
     <a href="#">Доставка</a>
@@ -208,7 +175,6 @@
     <a href="#">Контакты</a>
   </nav>
   
-  <!-- Правая часть: Контакты и иконки -->
   <div class="header-right">
     <span class="phone">+7 (499) 123-45-67</span>
     <a href="#" class="header-icon">🔍</a>
@@ -217,8 +183,8 @@
     </a>
   </div>
 </header>
- 
- <!-- HERO БЛОК -->
+
+<!-- HERO БЛОК -->
 <section class="hero">
   <div class="container hero-container">
     <div class="hero-text">
@@ -227,10 +193,8 @@
       <a href="#" class="btn">Смотреть каталог</a>
     </div>
     <div class="hero-image">
-      <!-- Вместо картинки пока ставим заглушку, потом заменим на фото -->
-      <div class="image-placeholder">
-        <span>Здесь будет фото оборудования</span>
-      </div>
+      <!-- Взял похожую иллюстрацию с бесплатного фотостока -->
+      <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1200&auto=format&fit=crop" alt="Лабораторное оборудование">
     </div>
   </div>
 </section>
