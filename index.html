@@ -16,34 +16,59 @@
   /* ШАПКА */
   .header {
     width: 100%;
-    height: 120px;
+    height: 80px; /* Сделали чуть ниже */
     border-bottom: 1px solid #E0E0E0;
     display: flex;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 40px; /* Уменьшили отступы по краям */
     justify-content: space-between;
     background: #ffffff;
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1A5FB4;
+  
+  /* Группируем логотип и иконку */
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
   }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: #1A5FB4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0F0F10;
+  }
+
+  /* Меню теперь идет сразу после логотипа */
   .nav {
     display: flex;
-    gap: 40px;
+    gap: 32px;
+    margin-left: 40px;
+    margin-right: auto; /* Прижимает меню влево, а остальное вправо */
   }
   .nav a {
-    font-size: 16px;
-    color: #0F0F10;
+    font-size: 15px;
+    color: #666;
     text-decoration: none;
     transition: color 0.2s;
   }
   .nav a:hover { color: #1A5FB4; }
+
+  /* Правая часть: телефон, поиск, корзина */
   .header-right {
     display: flex;
     align-items: center;
@@ -54,11 +79,14 @@
     font-weight: 600;
     color: #0F0F10;
   }
-  .cart {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1A5FB4;
+  .header-icon {
+    font-size: 20px;
+    color: #666;
     text-decoration: none;
+    cursor: pointer;
+  }
+  .header-icon:hover {
+    color: #1A5FB4;
   }
 </style>
 </head>
@@ -66,16 +94,22 @@
 
 <!-- ШАПКА -->
 <header class="header">
-  <a href="#" class="logo">ФизЛабо</a>
+  <a href="#" class="logo-group">
+    <div class="logo-icon">Ф</div>
+    <span class="logo-text">ФизЛабо</span>
+  </a>
+  
   <nav class="nav">
     <a href="#">Каталог</a>
     <a href="#">Доставка</a>
     <a href="#">О нас</a>
     <a href="#">Контакты</a>
   </nav>
+  
   <div class="header-right">
-    <span class="phone">+7 (499) 236-13-56</span>
-    <a href="#" class="cart">Корзина (0)</a>
+    <span class="phone">+7 (499) 123-45-67</span>
+    <a href="#" class="header-icon">🔍</a>
+    <a href="#" class="header-icon">🛒</a>
   </div>
 </header>
 
